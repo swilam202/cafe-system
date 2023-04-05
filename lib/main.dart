@@ -1,5 +1,7 @@
+import 'package:cafe/pages/admin%20pages/users%20info.dart';
 import 'package:flutter/material.dart';
 
+import 'pages/admin pages/admin home page.dart';
 import 'pages/loginPage.dart';
 
 void main() {
@@ -17,7 +19,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LogIn(),
+      initialRoute: 'admin',
+      routes: {
+        'login':(context)=>LogIn(),
+        'admin':(context)=>AdminHomePage(),
+        'users':(context)=>UserInfo(),
+      },
     );
   }
 }

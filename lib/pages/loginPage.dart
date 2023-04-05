@@ -1,14 +1,16 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../controllers/data controller.dart';
-import 'home page.dart';
+import 'admin pages/admin home page.dart';
 
 class LogIn extends StatelessWidget {
 
   GlobalKey<FormState> key = GlobalKey();
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
+  DataController dataController = Get.put(DataController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +31,8 @@ class LogIn extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.text,
                 validator: (value){
-                  if (DataController().users[0]['email'] != value)
-                    return 'incorrect email';
+                  if (dataController.users[1]['password'] != value)
+                    return 'Password is incorrect';
                   else
                     return null;
                 },
@@ -45,17 +47,17 @@ class LogIn extends StatelessWidget {
                 obscureText: true,
                 obscuringCharacter: '*',
                 keyboardType: TextInputType.visiblePassword,
-                validator: (value){
-                  if (DataController().users[0]['password'] != value)
-                    return 'incorrect password';
+                validator: (value) {
+                  if (dataController.users[1]['email'] != value)
+                    return 'Email is incorrect';
                   else
                     return null;
-                },
+                }
               ),
 
               ElevatedButton(onPressed: (){
                 if(key.currentState!.validate()){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomePage()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AdminHomePage()));
                 }
                 else
                   return;
