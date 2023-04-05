@@ -16,7 +16,7 @@ class _UserInfoState extends State<UserInfo> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    sqldb.db;
+    dataController.getUsers('users');
   }
 
   @override
@@ -28,22 +28,26 @@ class _UserInfoState extends State<UserInfo> {
         actions: [
           ElevatedButton(onPressed: ()=>sqldb.deletedatabase(), child: Text('delete')),
           ElevatedButton(onPressed: ()=>sqldb.initDatabase(), child: Text('init')),
-          ElevatedButton(onPressed: ()=>dataController.addUser('users',  {
+          ElevatedButton(onPressed: ()async{dataController.addUser('users',  {
             'name': 'mahmoud',
             'username': 'hoda',
             'password': 'dhfoiaue',
             'permissions': 2
-          }), child: Text('insert')),
+          });}, child: Text('insert')),
+          ElevatedButton(onPressed: ()async{
+            List res = await sqldb.queryData('users');
+            print(res);
+          }, child: Text('query')),
         ],
       ),
       body: Obx(
-        () => dataController.users.isEmpty ? Center(child: Text('nothing'),):
+        () =>
         ListView.builder(
           itemCount: dataController.users.length,
           itemBuilder: (_, index) {
             return userListTile(
               dataController.users[index]['name'],
-              dataController.users[index]['user'],
+              dataController.users[index]['username'],
               dataController.users[index]['password'],
               dataController.users[index]['permissions'],
             );

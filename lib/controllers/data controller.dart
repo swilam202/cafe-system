@@ -3,25 +3,8 @@ import 'package:get/get.dart';
 
 class DataController extends GetxController {
   SQLDB sqldb = SQLDB();
-  List users = [
-    {
-      'name': 'mahmoud',
-      'user': 'hoda',
-      'password': 'dhfoiaue',
-      'permissions': 2
-    },
-    {
-      'name': 'mahmoud',
-      'user': 'hoda',
-      'password': 'dhfoiaue',
-      'permissions': 2
-    },
-    {
-      'name': 'mahmoud',
-      'user': 'hoda',
-      'password': 'dhfoiaue',
-      'permissions': 2
-    },
+  RxList users = [
+
   ].obs;
 
   getUsers(String tableName) async {
