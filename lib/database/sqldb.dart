@@ -42,7 +42,7 @@ class SQLDB {
   }
 
   deleteData(String tableName, int id) async {
-    int response = await _db!.delete(tableName, where: 'id', whereArgs: [id]);
+    int response = await _db!.delete(tableName, where: 'id = ?', whereArgs: [id]);
     return response;
   }
 

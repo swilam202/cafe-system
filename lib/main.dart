@@ -1,7 +1,8 @@
-import 'package:cafe/pages/admin%20pages/users%20info.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'pages/admin pages/admin home page.dart';
+import 'pages/admin pages/employees.dart';
 import 'pages/loginPage.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(

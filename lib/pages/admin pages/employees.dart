@@ -1,8 +1,9 @@
-import 'package:cafe/components/user%20lists.dart';
 import 'package:cafe/controllers/data%20controller.dart';
 import 'package:cafe/database/sqldb.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../components/employees sheet.dart';
 
 class UserInfo extends StatefulWidget {
   @override
@@ -12,6 +13,7 @@ class UserInfo extends StatefulWidget {
 class _UserInfoState extends State<UserInfo> {
   DataController dataController = Get.put(DataController());
   SQLDB sqldb = SQLDB();
+
   @override
   void initState() {
     // TODO: implement initState
@@ -23,29 +25,15 @@ class _UserInfoState extends State<UserInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Employees'),
+        title: const Text('Employees'),
         centerTitle: true,
-        actions: [
-          ElevatedButton(onPressed: ()=>sqldb.deletedatabase(), child: Text('delete')),
-          ElevatedButton(onPressed: ()=>sqldb.initDatabase(), child: Text('init')),
-          ElevatedButton(onPressed: ()async{dataController.addUser('users',  {
-            'name': 'mahmoud',
-            'username': 'hoda',
-            'password': 'dhfoiaue',
-            'permissions': 2
-          });}, child: Text('insert')),
-          ElevatedButton(onPressed: ()async{
-            List res = await sqldb.queryData('users');
-            print(res);
-          }, child: Text('query')),
-        ],
       ),
       body: Obx(
-        () =>
-        ListView.builder(
+        () => ListView.builder(
           itemCount: dataController.users.length,
           itemBuilder: (_, index) {
             return userListTile(
+              dataController.users[index]['id'],
               dataController.users[index]['name'],
               dataController.users[index]['username'],
               dataController.users[index]['password'],
@@ -54,6 +42,7 @@ class _UserInfoState extends State<UserInfo> {
           },
         ),
       ),
+      floatingActionButton: fab(),
     );
   }
 }

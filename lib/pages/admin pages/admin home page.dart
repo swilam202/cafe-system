@@ -35,7 +35,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
           children: [
             SizedBox(),
             SizedBox(),
-            gridButton('Users',(){
+            gridButton('Employees',(){
               Navigator.of(context).pushNamed('users');
             }),
             gridButton('title',(){}),
