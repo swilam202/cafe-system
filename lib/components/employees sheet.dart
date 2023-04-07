@@ -18,89 +18,99 @@ Widget userListTile(
   String password,
   int permission,
 ) {
-  return ListTile(
-    title: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(name),
-        Text(user),
-        Text(password),
-        Text(permission.toString()),
-        IconButton(
-          icon: const Icon(
-            Icons.mode,
-            color: Colors.blue,
-          ),
-          onPressed: () {
-            Get.bottomSheet(
-              Wrap(
-                alignment: WrapAlignment.center,
-                children: [
-                  customTextField(
-                      text: name,
-                      label: 'name',
-                      hint: 'Name of the employee',
-                      controller: nameController),
-                  customTextField(
-                    text: user,
-                    label: 'username',
-                    hint: 'username of the employee',
-                    controller: userController,
+  return Card(
+    child: ListTile(
+      title: DefaultTextStyle(
+        style: TextStyle(fontSize: 18,color: Colors.black,fontWeight: FontWeight.w400),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('name:   $name'),
+                IconButton(
+                  icon: const Icon(
+                    Icons.mode,
+                    color: Colors.blue,
                   ),
-                  customTextField(
-                    text: password,
-                    label: 'password',
-                    hint: 'Password of the employee',
-                    controller: passController,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          dataController.deleteUser('users', id);
-                          Get.back();
-                          dataController.getUsers('users');
-                        },
-                        icon: const Icon(
-                          Icons.delete,
-                          color: Colors.red,
-                        ),
+                  onPressed: () {
+                    Get.bottomSheet(
+                      Wrap(
+                        alignment: WrapAlignment.center,
+                        children: [
+                          customTextField(
+                              text: name,
+                              label: 'name',
+                              hint: 'Name of the employee',
+                              controller: nameController),
+                          customTextField(
+                            text: user,
+                            label: 'username',
+                            hint: 'username of the employee',
+                            controller: userController,
+                          ),
+                          customTextField(
+                            text: password,
+                            label: 'password',
+                            hint: 'Password of the employee',
+                            controller: passController,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  dataController.deleteUser('users', id);
+                                  Get.back();
+                                  dataController.getUsers('users');
+                                },
+                                icon: const Icon(
+                                  Icons.delete,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            ],
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              if (nameController.text.isEmpty ||
+                                  userController.text.isEmpty ||
+                                  passController.text.isEmpty) {
+                                warning(
+                                    title: 'Warning',
+                                    message: 'All fields mustn\'t be null');
+                              } else {
+                                dataController.updateUser(
+                                  'users',
+                                  {
+                                    'name': nameController.text,
+                                    'username': userController.text,
+                                    'password': passController.text,
+                                    'permissions': 4,
+                                  },
+                                  id,
+                                );
+                                Get.back();
+                              }
+                              dataController.getUsers('users');
+                            },
+                            child: const Text('Update'),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      if (nameController.text.isEmpty ||
-                          userController.text.isEmpty ||
-                          passController.text.isEmpty) {
-                        warning(
-                            title: 'Warning',
-                            message: 'All fields mustn\'t be null');
-                      } else {
-                        dataController.updateUser(
-                          'users',
-                          {
-                            'name': nameController.text,
-                            'username': userController.text,
-                            'password': passController.text,
-                            'permissions': 4,
-                          },
-                          id,
-                        );
-                        Get.back();
-                      }
-                      dataController.getUsers('users');
-                    },
-                    child: const Text('Update'),
-                  ),
-                ],
-              ),
-              backgroundColor: Colors.white,
-            );
-          },
+                      backgroundColor: Colors.white,
+                    );
+                  },
+                ),
+              ],
+            ),
+            Text('username:   $user'),
+            Text('password:   $password'),
+            Text('permission:   $permission'),
+          ],
         ),
-      ],
+      ),
     ),
   );
 }
@@ -113,21 +123,22 @@ FloatingActionButton fab() {
           alignment: WrapAlignment.center,
           children: [
             customTextField(
-                text: '',
                 label: 'name',
                 hint: 'Name of the employee',
                 controller: nameController),
             customTextField(
-                text: '',
                 label: 'username',
                 hint: 'username of the employee',
                 controller: userController),
             customTextField(
-                text: '',
                 label: 'password',
                 hint: 'Password of the employee',
                 controller: passController),
             ElevatedButton(
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all(
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 10)),
+              ),
               onPressed: () {
                 if (nameController.text.isEmpty ||
                     userController.text.isEmpty ||
@@ -148,7 +159,7 @@ FloatingActionButton fab() {
                 }
                 dataController.getUsers('users');
               },
-              child: const Text('Update'),
+              child: const Text('+ Add'),
             ),
           ],
         ),

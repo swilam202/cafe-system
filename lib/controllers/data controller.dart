@@ -1,11 +1,11 @@
 import 'package:cafe/database/sqldb.dart';
+import 'package:cafe/models/supplier%20model.dart';
 import 'package:get/get.dart';
 
 class DataController extends GetxController {
   SQLDB sqldb = SQLDB();
-  RxList users = [
-
-  ].obs;
+  RxList users = [].obs;
+  RxList  suppliers = [].obs;
 
   getUsers(String tableName) async {
     List list = await sqldb.queryData(tableName);
@@ -26,4 +26,6 @@ class DataController extends GetxController {
     await sqldb.deleteData(tableName, id);
     getUsers(tableName);
   }
+
+
 }

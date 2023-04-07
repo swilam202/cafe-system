@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-Widget customTextField({required String text, required String label, required String hint,required TextEditingController controller}){
-  controller.text = text;
+Widget customTextField({String? text, required String label, required String hint,required TextEditingController controller}){
+  controller.text = text ?? '';
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
     child: TextField(

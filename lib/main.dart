@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'pages/admin pages/admin home page.dart';
 import 'pages/admin pages/employees.dart';
+import 'pages/admin pages/suppliers.dart';
 import 'pages/loginPage.dart';
 
 void main() {
@@ -18,13 +19,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.indigo,
       ),
       initialRoute: 'admin',
       routes: {
         'login':(context)=>LogIn(),
         'admin':(context)=>AdminHomePage(),
         'users':(context)=>UserInfo(),
+        'suppliers':(context)=>SuppliersPage(),
       },
     );
   }

@@ -20,10 +20,10 @@ class _AdminHomePageState extends State<AdminHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromRGBO(234, 234, 234, 1.0),
       appBar: AppBar(
         title: const Text('Control Page'),
         centerTitle: true,
-
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -33,15 +33,14 @@ class _AdminHomePageState extends State<AdminHomePage> {
           crossAxisSpacing: 20,
           childAspectRatio: 1.5,
           children: [
-            SizedBox(),
-            SizedBox(),
-            gridButton('Employees',(){
-              Navigator.of(context).pushNamed('users');
-            }),
-            gridButton('title',(){}),
-            gridButton('title',(){}),
-            gridButton('title',(){}),
-
+            const SizedBox(),
+            const SizedBox(),
+            gridButton(
+                'Employees', () => Navigator.of(context).pushNamed('users')),
+            gridButton('Suppliers',
+                () => Navigator.of(context).pushNamed('suppliers')),
+            gridButton('title', () {}),
+            gridButton('title', () {}),
           ],
         ),
       ),

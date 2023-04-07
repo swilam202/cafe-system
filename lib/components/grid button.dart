@@ -7,8 +7,8 @@ Widget gridButton(String title, Function() function) {
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Color.fromRGBO(40, 40, 155, 0.7),
-            Color.fromRGBO(36, 36, 91, 0.9),
+            Color.fromRGBO(181, 194, 231, 0.7019607843137254),
+            Color.fromRGBO(84, 84, 204, 0.9019607843137255),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,

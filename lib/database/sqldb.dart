@@ -20,15 +20,29 @@ class SQLDB {
   }
 
   _onCreate(Database db, int version) async {
-    await db.execute('''
+    Batch batch = db.batch();
+     batch.execute(
+         '''
     CREATE TABLE "users"(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
     username TEXT,
     password TEXT,
     permissions INTEGER)
-    ''');
-    print('database created+++++++++++++++++++++++++++');
+    '''
+     );
+
+     batch.execute(
+       '''
+       CREATE TABLE "suppliers"(
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       name TEXT,
+       email TEXT,
+       phone INTEGER)
+       '''
+     );
+
+     await batch.commit();
   }
 
   queryData(String tableName) async {
