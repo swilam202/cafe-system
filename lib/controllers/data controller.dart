@@ -5,11 +5,11 @@ import 'package:get/get.dart';
 class DataController extends GetxController {
   SQLDB sqldb = SQLDB();
   RxList users = [].obs;
-  RxList  suppliers = [].obs;
+  RxList suppliers = [].obs;
 
   getUsers(String tableName) async {
     List list = await sqldb.queryData(tableName);
-    users.assignAll(list);
+    tableName == 'users' ? users.assignAll(list) : suppliers.assignAll(list);
   }
 
   updateUser(String tableName, Map<String, Object> map, int id) async {
@@ -26,6 +26,4 @@ class DataController extends GetxController {
     await sqldb.deleteData(tableName, id);
     getUsers(tableName);
   }
-
-
 }

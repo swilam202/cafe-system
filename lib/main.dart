@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import 'pages/admin pages/admin home page.dart';
 import 'pages/admin pages/employees.dart';
-import 'pages/admin pages/suppliers.dart';
+import 'pages/admin pages/suppliers page.dart';
 import 'pages/loginPage.dart';
 
 void main() {
@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),

@@ -1,3 +1,4 @@
+import 'package:cafe/components/sheet%20button.dart';
 import 'package:cafe/components/warning.dart';
 import 'package:cafe/controllers/data%20controller.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +20,11 @@ Widget userListTile(
   int permission,
 ) {
   return Card(
+    elevation: 5,
     child: ListTile(
       title: DefaultTextStyle(
-        style: TextStyle(fontSize: 18,color: Colors.black,fontWeight: FontWeight.w400),
+        style: const TextStyle(
+            fontSize: 18, color: Colors.black, fontWeight: FontWeight.w400),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -72,31 +75,28 @@ Widget userListTile(
                               ),
                             ],
                           ),
-                          ElevatedButton(
-                            onPressed: () {
-                              if (nameController.text.isEmpty ||
-                                  userController.text.isEmpty ||
-                                  passController.text.isEmpty) {
-                                warning(
-                                    title: 'Warning',
-                                    message: 'All fields mustn\'t be null');
-                              } else {
-                                dataController.updateUser(
-                                  'users',
-                                  {
-                                    'name': nameController.text,
-                                    'username': userController.text,
-                                    'password': passController.text,
-                                    'permissions': 4,
-                                  },
-                                  id,
-                                );
-                                Get.back();
-                              }
-                              dataController.getUsers('users');
-                            },
-                            child: const Text('Update'),
-                          ),
+                          sheetButton(() {
+                            if (nameController.text.isEmpty ||
+                                userController.text.isEmpty ||
+                                passController.text.isEmpty) {
+                              warning(
+                                  title: 'Warning',
+                                  message: 'All fields mustn\'t be null');
+                            } else {
+                              dataController.updateUser(
+                                'users',
+                                {
+                                  'name': nameController.text,
+                                  'username': userController.text,
+                                  'password': passController.text,
+                                  'permissions': 4,
+                                },
+                                id,
+                              );
+                              Get.back();
+                            }
+                            dataController.getUsers('users');
+                          }, Text('Update'))
                         ],
                       ),
                       backgroundColor: Colors.white,
@@ -123,23 +123,22 @@ FloatingActionButton fab() {
           alignment: WrapAlignment.center,
           children: [
             customTextField(
-                label: 'name',
-                hint: 'Name of the employee',
-                controller: nameController),
+              label: 'name',
+              hint: 'Name of the employee',
+              controller: nameController,
+            ),
             customTextField(
-                label: 'username',
-                hint: 'username of the employee',
-                controller: userController),
+              label: 'username',
+              hint: 'username of the employee',
+              controller: userController,
+            ),
             customTextField(
-                label: 'password',
-                hint: 'Password of the employee',
-                controller: passController),
-            ElevatedButton(
-              style: ButtonStyle(
-                padding: MaterialStateProperty.all(
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 10)),
-              ),
-              onPressed: () {
+              label: 'password',
+              hint: 'Password of the employee',
+              controller: passController,
+            ),
+            sheetButton(
+              () {
                 if (nameController.text.isEmpty ||
                     userController.text.isEmpty ||
                     passController.text.isEmpty) {
@@ -159,7 +158,7 @@ FloatingActionButton fab() {
                 }
                 dataController.getUsers('users');
               },
-              child: const Text('+ Add'),
+              const Text('+ add'),
             ),
           ],
         ),

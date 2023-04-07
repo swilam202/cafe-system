@@ -10,6 +10,4 @@ class Users {
     required this.position,
     required this.premissionLvl,
   });
-
-  
 }

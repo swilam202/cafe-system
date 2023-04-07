@@ -39,8 +39,12 @@ class _AdminHomePageState extends State<AdminHomePage> {
                 'Employees', () => Navigator.of(context).pushNamed('users')),
             gridButton('Suppliers',
                 () => Navigator.of(context).pushNamed('suppliers')),
-            gridButton('title', () {}),
-            gridButton('title', () {}),
+            gridButton('title', () {
+              sqldb.initDatabase();
+            }),
+            gridButton('delete', () {
+              sqldb.deletedatabase();
+            }),
           ],
         ),
       ),
