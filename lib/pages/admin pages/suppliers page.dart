@@ -15,7 +15,6 @@ class SuppliersPage extends StatefulWidget {
 }
 
 class _SuppliersPageState extends State<SuppliersPage> {
-
   @override
   void initState() {
     // TODO: implement initState
@@ -30,15 +29,15 @@ class _SuppliersPageState extends State<SuppliersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(234, 234, 234, 1.0),
       appBar: AppBar(
         title: const Text('Contacts'),
         centerTitle: true,
-
       ),
       body: Obx(() => ListView.builder(
             itemCount: dataController.suppliers.length,
             itemBuilder: (_, index) {
-             return suppliersCard(
+              return suppliersCard(
                   name: dataController.suppliers[index]['name'],
                   email: dataController.suppliers[index]['email'],
                   phone: dataController.suppliers[index]['phone']);
@@ -55,16 +54,19 @@ class _SuppliersPageState extends State<SuppliersPage> {
               alignment: WrapAlignment.center,
               children: [
                 customTextField(
+                  type: TextInputType.text,
                   label: 'Name',
                   hint: 'Supplier Name',
                   controller: nameController,
                 ),
                 customTextField(
+                  type: TextInputType.emailAddress,
                   label: 'Email',
                   hint: 'Supplier Email',
                   controller: emailController,
                 ),
                 customTextField(
+                  type: TextInputType.phone,
                   label: 'Phone',
                   hint: 'Phone Name',
                   controller: phoneController,
@@ -96,7 +98,6 @@ class _SuppliersPageState extends State<SuppliersPage> {
             ),
             backgroundColor: Colors.white,
           );
-
         },
         child: Icon(Icons.add),
       ),

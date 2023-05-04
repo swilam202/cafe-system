@@ -4,11 +4,13 @@ import 'package:cafe/controllers/data%20controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../models/user.dart';
 import 'custom text field.dart';
 
 TextEditingController nameController = TextEditingController();
 TextEditingController userController = TextEditingController();
 TextEditingController passController = TextEditingController();
+TextEditingController permissionController = TextEditingController();
 
 DataController dataController = Get.put(DataController());
 
@@ -24,7 +26,10 @@ Widget userListTile(
     child: ListTile(
       title: DefaultTextStyle(
         style: const TextStyle(
-            fontSize: 18, color: Colors.black, fontWeight: FontWeight.w400),
+          fontSize: 18,
+          color: Colors.black,
+          fontWeight: FontWeight.w400,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -43,21 +48,31 @@ Widget userListTile(
                         alignment: WrapAlignment.center,
                         children: [
                           customTextField(
+                              type: TextInputType.text,
                               text: name,
                               label: 'name',
                               hint: 'Name of the employee',
                               controller: nameController),
                           customTextField(
+                            type: TextInputType.text,
                             text: user,
                             label: 'username',
                             hint: 'username of the employee',
                             controller: userController,
                           ),
                           customTextField(
+                            type: TextInputType.visiblePassword,
                             text: password,
                             label: 'password',
                             hint: 'Password of the employee',
                             controller: passController,
+                          ),
+                          customTextField(
+                            type: TextInputType.phone,
+                            text: permission.toString(),
+                            label: 'permission',
+                            hint: 'permission of the employee',
+                            controller: permissionController,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -89,14 +104,14 @@ Widget userListTile(
                                   'name': nameController.text,
                                   'username': userController.text,
                                   'password': passController.text,
-                                  'permissions': 4,
+                                  'permissions': permissionController.text,
                                 },
                                 id,
                               );
                               Get.back();
                             }
                             dataController.getUsers('users');
-                          }, Text('Update'))
+                          }, const Text('Update'))
                         ],
                       ),
                       backgroundColor: Colors.white,
@@ -123,24 +138,34 @@ FloatingActionButton fab() {
           alignment: WrapAlignment.center,
           children: [
             customTextField(
+              type: TextInputType.text,
               label: 'name',
               hint: 'Name of the employee',
               controller: nameController,
             ),
             customTextField(
+              type: TextInputType.text,
               label: 'username',
               hint: 'username of the employee',
               controller: userController,
             ),
             customTextField(
+              type: TextInputType.visiblePassword,
               label: 'password',
               hint: 'Password of the employee',
               controller: passController,
+            ),
+            customTextField(
+              type: TextInputType.phone,
+              label: 'permissions',
+              hint: 'permissions of the employee',
+              controller: permissionController,
             ),
             sheetButton(
               () {
                 if (nameController.text.isEmpty ||
                     userController.text.isEmpty ||
+                    permissionController.text.isEmpty ||
                     passController.text.isEmpty) {
                   warning(
                       title: 'Warning', message: 'All fields mustn\'t be null');
@@ -151,14 +176,14 @@ FloatingActionButton fab() {
                       'name': nameController.text,
                       'username': userController.text,
                       'password': passController.text,
-                      'permissions': 4,
+                      'permissions': permissionController.text,
                     },
                   );
                   Get.back();
                 }
                 dataController.getUsers('users');
               },
-              const Text('+ add'),
+              const Text('+ Add'),
             ),
           ],
         ),

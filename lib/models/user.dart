@@ -1,13 +1,15 @@
 class Users {
-  int id;
-  String name;
-  String position;
-  int premissionLvl;
+  int? id;
+  String? name;
+  String? username;
+  String? password;
+  int? permissions;
 
   Users({
-    required this.id,
+    this.id,
     required this.name,
-    required this.position,
-    required this.premissionLvl,
+    required this.username,
+    required this.password,
+    required this.permissions,
   });
 }

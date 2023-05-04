@@ -31,7 +31,7 @@ class LogIn extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.text,
                 validator: (value){
-                  if (dataController.users[1]['password'] != value)
+                  if (true/*dataController.users[1]['password'] != value*/)
                     return 'Password is incorrect';
                   else
                     return null;
@@ -48,7 +48,7 @@ class LogIn extends StatelessWidget {
                 obscuringCharacter: '*',
                 keyboardType: TextInputType.visiblePassword,
                 validator: (value) {
-                  if (dataController.users[1]['email'] != value)
+                  if ( true/* dataController.users[1]['email'] != value*/)
                     return 'Email is incorrect';
                   else
                     return null;

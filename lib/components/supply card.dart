@@ -13,9 +13,12 @@ Widget suppliersCard({
       child: Wrap(
         alignment: WrapAlignment.center,
         children: [
-          Text(
-            name,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 17),
+            child: Text(
+              name,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            ),
           ),
           Row(
             children: [

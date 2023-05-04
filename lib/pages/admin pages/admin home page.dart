@@ -35,16 +35,18 @@ class _AdminHomePageState extends State<AdminHomePage> {
           children: [
             const SizedBox(),
             const SizedBox(),
+            gridButton('Employees',
+                () => Navigator.of(context).pushNamed('users'), Icons.people),
             gridButton(
-                'Employees', () => Navigator.of(context).pushNamed('users')),
-            gridButton('Suppliers',
-                () => Navigator.of(context).pushNamed('suppliers')),
-            gridButton('title', () {
+                'Suppliers',
+                () => Navigator.of(context).pushNamed('suppliers'),
+                Icons.contact_phone),
+            gridButton('init', () {
               sqldb.initDatabase();
-            }),
+            }, Icons.add),
             gridButton('delete', () {
               sqldb.deletedatabase();
-            }),
+            }, Icons.delete),
           ],
         ),
       ),

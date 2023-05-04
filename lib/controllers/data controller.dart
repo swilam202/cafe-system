@@ -10,6 +10,7 @@ class DataController extends GetxController {
   getUsers(String tableName) async {
     List list = await sqldb.queryData(tableName);
     tableName == 'users' ? users.assignAll(list) : suppliers.assignAll(list);
+    print('++++++++++++++++++++++++${users.value}');
   }
 
   updateUser(String tableName, Map<String, Object> map, int id) async {

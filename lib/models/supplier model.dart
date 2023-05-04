@@ -5,4 +5,5 @@ class Supplier {
   int phone;
 
   Supplier(this.id, this.name, this.email, this.phone);
+
 }
