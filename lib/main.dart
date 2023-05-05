@@ -1,9 +1,12 @@
+import 'package:cafe/pages/cashier%20pages/add%20order.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'pages/admin pages/admin home page.dart';
 import 'pages/admin pages/employees.dart';
+import 'pages/admin pages/products.dart';
 import 'pages/admin pages/suppliers page.dart';
+import 'pages/cashier pages/cahier home page.dart';
 import 'pages/loginPage.dart';
 
 void main() {
@@ -20,12 +23,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      initialRoute: 'admin',
+      home: AdminHomePage(),
       routes: {
         'login':(context)=>LogIn(),
         'admin':(context)=>AdminHomePage(),
         'users':(context)=>UserInfo(),
         'suppliers':(context)=>SuppliersPage(),
+        'products':(context)=>Products(),
+        'order': (context)=>Orders(),
       },
     );
   }

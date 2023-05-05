@@ -22,13 +22,13 @@ class SQLDB {
   _onCreate(Database db, int version) async {
     Batch batch = db.batch();
     batch.execute('''
-    CREATE TABLE "users"(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
-    username TEXT,
-    password TEXT,
-    permissions INTEGER)
-    ''');
+      CREATE TABLE "users"(
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT,
+      username TEXT,
+      password TEXT,
+      permissions INTEGER)
+      ''');
 
     batch.execute('''
        CREATE TABLE "suppliers"(
@@ -36,6 +36,24 @@ class SQLDB {
        name TEXT,
        email TEXT,
        phone INTEGER)
+       ''');
+
+    batch.execute('''
+       CREATE TABLE "products"(
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       name TEXT,
+       price INTEGER,
+       duration TEXT)
+       ''');
+
+    batch.execute('''
+       CREATE TABLE "order"(
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       code INTEGER,
+       name TEXT,
+       amount INTEGER,
+       total INTEGER,
+       status TEXT)
        ''');
 
     await batch.commit();

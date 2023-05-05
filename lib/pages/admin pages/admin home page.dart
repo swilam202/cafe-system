@@ -41,6 +41,10 @@ class _AdminHomePageState extends State<AdminHomePage> {
                 'Suppliers',
                 () => Navigator.of(context).pushNamed('suppliers'),
                 Icons.contact_phone),
+            gridButton(
+                'Products',
+                    () => Navigator.of(context).pushNamed('products'),
+                Icons.production_quantity_limits),
             gridButton('init', () {
               sqldb.initDatabase();
             }, Icons.add),

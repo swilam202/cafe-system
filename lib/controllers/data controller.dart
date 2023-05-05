@@ -6,11 +6,19 @@ class DataController extends GetxController {
   SQLDB sqldb = SQLDB();
   RxList users = [].obs;
   RxList suppliers = [].obs;
+  RxList products = [].obs;
+  RxList order = [].obs;
 
   getUsers(String tableName) async {
     List list = await sqldb.queryData(tableName);
-    tableName == 'users' ? users.assignAll(list) : suppliers.assignAll(list);
-    print('++++++++++++++++++++++++${users.value}');
+    tableName == 'users'
+        ? users.assignAll(list)
+        : tableName == 'suppliers'
+            ? suppliers.assignAll(list)
+            : tableName == 'order'
+                ? order.assignAll(list)
+                : products.assignAll(list);
+    print(order.value);
   }
 
   updateUser(String tableName, Map<String, Object> map, int id) async {
