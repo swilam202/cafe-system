@@ -5,7 +5,8 @@ Widget ProductListTile(
   String name,
   int price,
   String duration,
-) {
+    int code,)
+{
   return Container(
     margin: const EdgeInsets.all(5),
     child: Card(
@@ -18,7 +19,7 @@ Widget ProductListTile(
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
           leading: Text(
-            name,
+            '$code      $name',
             style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
           trailing: Text(

@@ -38,19 +38,34 @@ class _AdminHomePageState extends State<AdminHomePage> {
             gridButton('Employees',
                 () => Navigator.of(context).pushNamed('users'), Icons.people),
             gridButton(
-                'Suppliers',
-                () => Navigator.of(context).pushNamed('suppliers'),
-                Icons.contact_phone),
+              'Suppliers',
+              () => Navigator.of(context).pushNamed('suppliers'),
+              Icons.contact_phone,
+            ),
             gridButton(
-                'Products',
-                    () => Navigator.of(context).pushNamed('products'),
-                Icons.production_quantity_limits),
-            gridButton('init', () {
-              sqldb.initDatabase();
-            }, Icons.add),
-            gridButton('delete', () {
-              sqldb.deletedatabase();
-            }, Icons.delete),
+              'Products',
+              () => Navigator.of(context).pushNamed('products'),
+              Icons.production_quantity_limits,
+            ),
+            gridButton(
+              'orders',
+              () => Navigator.of(context).pushNamed('order'),
+              Icons.emoji_food_beverage,
+            ),
+            gridButton(
+              'init',
+              () {
+                sqldb.initDatabase();
+              },
+              Icons.add,
+            ),
+            gridButton(
+              'delete',
+              () {
+                sqldb.deletedatabase();
+              },
+              Icons.delete,
+            ),
           ],
         ),
       ),

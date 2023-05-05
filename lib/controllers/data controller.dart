@@ -18,7 +18,6 @@ class DataController extends GetxController {
             : tableName == 'order'
                 ? order.assignAll(list)
                 : products.assignAll(list);
-    print(order.value);
   }
 
   updateUser(String tableName, Map<String, Object> map, int id) async {

@@ -35,7 +35,7 @@ class _ProductsState extends State<Products> {
               dataController.products[index]['name'],
               dataController.products[index]['price'],
               dataController.products[index]['duration'],
-
+              dataController.products[index]['code'],
             );
           },
         ),
@@ -45,11 +45,18 @@ class _ProductsState extends State<Products> {
           TextEditingController nameController = TextEditingController();
           TextEditingController priceController = TextEditingController();
           TextEditingController durationController = TextEditingController();
+          TextEditingController codeController = TextEditingController();
 
           Get.bottomSheet(
             Wrap(
               alignment: WrapAlignment.center,
               children: [
+                customTextField(
+                  type: TextInputType.phone,
+                  label: 'code',
+                  hint: 'product code',
+                  controller: codeController,
+                ),
                 customTextField(
                   type: TextInputType.text,
                   label: 'Name',
@@ -72,6 +79,7 @@ class _ProductsState extends State<Products> {
                       () {
                     if (nameController.text.isEmpty ||
                         priceController.text.isEmpty ||
+                        codeController.text.isEmpty ||
                         durationController.text.isEmpty) {
                       warning(
                           title: 'Warning',
@@ -83,6 +91,7 @@ class _ProductsState extends State<Products> {
                           'name': nameController.text,
                           'price': priceController.text,
                           'duration': durationController.text,
+                          'code': codeController.text,
                         },
                       );
                       Get.back();

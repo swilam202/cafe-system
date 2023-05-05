@@ -41,6 +41,7 @@ class SQLDB {
     batch.execute('''
        CREATE TABLE "products"(
        id INTEGER PRIMARY KEY AUTOINCREMENT,
+       code INTEGER,
        name TEXT,
        price INTEGER,
        duration TEXT)
@@ -50,7 +51,6 @@ class SQLDB {
        CREATE TABLE "order"(
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        code INTEGER,
-       name TEXT,
        amount INTEGER,
        total INTEGER,
        status TEXT)
