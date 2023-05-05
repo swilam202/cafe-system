@@ -7,6 +7,9 @@ import 'pages/admin pages/employees.dart';
 import 'pages/admin pages/products.dart';
 import 'pages/admin pages/suppliers page.dart';
 import 'pages/cashier pages/cahier home page.dart';
+import 'pages/cashier pages/final order step.dart';
+import 'pages/cashier pages/order next step.dart';
+import 'pages/cashier pages/orders.dart';
 import 'pages/loginPage.dart';
 
 void main() {
@@ -31,6 +34,9 @@ class MyApp extends StatelessWidget {
         'suppliers':(context)=>SuppliersPage(),
         'products':(context)=>Products(),
         'order': (context)=>Orders(),
+        'addorder':(context)=>AddOrder(),
+        'next':(context)=>NextStep(),
+        'final':(context)=>FianlOrder()
       },
     );
   }
