@@ -27,7 +27,7 @@ class _FianlOrderState extends State<FianlOrder> {
             print('total :  ${controller.order.getTotal()}');
             print('cash or visa :  ${controller.order.getIsCash()}');
             print('here or takeaway :  ${controller.order.getIsTakeAway()}');
-            Navigator.of(context).pushNamed('next');
+            Navigator.of(context).pop();
           },
           icon: Icon(Icons.arrow_back_outlined),
         ),

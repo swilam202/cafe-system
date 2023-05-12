@@ -19,7 +19,7 @@ class AddOrder extends StatelessWidget {
         leading: IconButton(
           onPressed: () {
 
-            Navigator.of(context).pushNamed('order');
+            Navigator.of(context).pop();
           },
           icon: Icon(Icons.arrow_back_outlined),
         ),

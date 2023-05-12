@@ -25,6 +25,7 @@ class _NextStepState extends State<NextStep> {
             print('total :  ${controller.order.getTotal()}');
             print('cash or visa :  ${controller.order.getIsCash()}');
             print('here or takeaway :  ${controller.order.getIsTakeAway()}');
+            Navigator.of(context).pop();
           },
           icon: Icon(Icons.arrow_back_outlined),
         ),
@@ -32,6 +33,7 @@ class _NextStepState extends State<NextStep> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+
           CheckboxListTile(
             value: controller.cash,
             onChanged: (val) {
@@ -52,9 +54,9 @@ class _NextStepState extends State<NextStep> {
               print('code :  ${controller.order.getCode()}');
               print('amount :  ${controller.order.getAmount()}');
               print('total :  ${controller.order.getTotal()}');
-              print('cash or visa :  ${controller.order.getIsCash()}');
+              print('cash?:  ${controller.order.getIsCash()}');
               print('here or takeaway :  ${controller.order.getIsTakeAway()}');
-              Navigator.of(context).pushNamed('addorder');
+
 
               Navigator.of(context).pushNamed('final');
             },
