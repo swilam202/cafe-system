@@ -21,7 +21,8 @@ class _FianlOrderState extends State<FianlOrder> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            controller.careTaker.restoreState(controller.order);
+
+            controller.careTaker.restoreState(controller.order,2);
             print('code :  ${controller.order.getCode()}');
             print('amount :  ${controller.order.getAmount()}');
             print('total :  ${controller.order.getTotal()}');
@@ -52,6 +53,7 @@ class _FianlOrderState extends State<FianlOrder> {
           ),
           ElevatedButton(
             onPressed: () {
+
               controller.order.setIsTakeAway(controller.takeAway == true ? 1 : 0);
               dataController.addUser(
                 'order',
@@ -71,6 +73,8 @@ class _FianlOrderState extends State<FianlOrder> {
               print('cash or visa :  ${controller.order.getIsCash()}');
               print('here or takeaway :  ${controller.order.getIsTakeAway()}');
               dataController.getUsers('order');
+              controller.index = 0;
+
               Navigator.of(context).pushNamed('admin');
             },
             style: ButtonStyle(

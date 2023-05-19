@@ -19,7 +19,8 @@ class _NextStepState extends State<NextStep> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            controller.careTaker.restoreState(controller.order);
+
+            controller.careTaker.restoreState(controller.order,1);
             print('code :  ${controller.order.getCode()}');
             print('amount :  ${controller.order.getAmount()}');
             print('total :  ${controller.order.getTotal()}');
@@ -49,7 +50,9 @@ class _NextStepState extends State<NextStep> {
           ),
           ElevatedButton(
             onPressed: () {
+
               controller.order.setIsCash(controller.cash == true ? 1 : 0);
+              controller.careTaker.saveState(controller.order);
 
               print('code :  ${controller.order.getCode()}');
               print('amount :  ${controller.order.getAmount()}');

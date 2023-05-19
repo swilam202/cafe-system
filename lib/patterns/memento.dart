@@ -101,11 +101,13 @@ class Memento {
 }
 
 class CareTaker {
-  late Memento _memento;
-  void saveState(Order order){
-    _memento = order.createMemento();
+  List<Memento> _mementos = [];
+
+  void saveState(Order order) {
+    _mementos.add(order.createMemento());
   }
-  void restoreState(Order order){
-    order.restoreMemento(_memento);
+
+  void restoreState(Order order, int index) {
+    order.restoreMemento(_mementos[index]);
   }
 }

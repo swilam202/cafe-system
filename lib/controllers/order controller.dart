@@ -6,4 +6,5 @@ class OrderController extends GetxController{
   final careTaker = CareTaker();
   bool cash = false;
   bool takeAway = false;
+  int index = 1;
 }

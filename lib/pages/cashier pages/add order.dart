@@ -7,18 +7,41 @@ import '../../controllers/data controller.dart';
 
  OrderController controller = Get.put(OrderController());
 
-class AddOrder extends StatelessWidget {
+class AddOrder extends StatefulWidget {
+  @override
+  State<AddOrder> createState() => _AddOrderState();
+}
+
+class _AddOrderState extends State<AddOrder> {
   DataController dataController = Get.put(DataController());
+
   TextEditingController codeController = TextEditingController();
+
   TextEditingController amountController = TextEditingController();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller.careTaker.saveState(controller.order);
+  }
+
+  @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
 
+            controller.careTaker.restoreState(controller.order,0);
+
+            print('code :  ${controller.order.getCode()}');
+            print('amount :  ${controller.order.getAmount()}');
+            print('total :  ${controller.order.getTotal()}');
+            print('cash or visa :  ${controller.order.getIsCash()}');
+            print('here or takeaway :  ${controller.order.getIsTakeAway()}');
             Navigator.of(context).pop();
           },
           icon: Icon(Icons.arrow_back_outlined),
@@ -49,6 +72,8 @@ class AddOrder extends StatelessWidget {
               controller.order.setAmount(int.parse(amountController.text));
               controller.order.setTotal(int.parse(amountController.text) * 50);
               controller.careTaker.saveState(controller.order);
+
+
               print('code :  ${controller.order.getCode()}');
               print('amount :  ${controller.order.getAmount()}');
               print('total :  ${controller.order.getTotal()}');
