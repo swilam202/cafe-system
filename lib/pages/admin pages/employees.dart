@@ -19,6 +19,7 @@ class _UserInfoState extends State<UserInfo> {
     // TODO: implement initState
     super.initState();
     dataController.getUsers('users');
+
   }
 
   @override
@@ -28,21 +29,19 @@ class _UserInfoState extends State<UserInfo> {
         title: const Text('Employees'),
         centerTitle: true,
       ),
-      body: Obx(
-        () => ListView.builder(
-          itemCount: dataController.users.length,
-          itemBuilder: (_, index) {
-            return userListTile(
-              dataController.users[index]['id'],
-              dataController.users[index]['name'],
-              dataController.users[index]['username'],
-              dataController.users[index]['password'],
-              dataController.users[index]['permissions'],
-            );
-          },
-        ),
+      body: ListView.builder(
+        itemCount: dataController.users.length,
+        itemBuilder: (_, index) {
+          return userListTile(
+
+            dataController.users[index]['name']!,
+            dataController.users[index]['username']!,
+            dataController.users[index]['password']!,
+
+          );
+        },
       ),
-      floatingActionButton: fab(),
+
     );
   }
 }

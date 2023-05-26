@@ -1,4 +1,5 @@
 import 'package:cafe/database/sqldb.dart';
+import 'package:cafe/pages/cashier%20pages/add%20order.dart';
 import 'package:flutter/material.dart';
 import '../../components/grid button.dart';
 
@@ -22,7 +23,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(234, 234, 234, 1.0),
       appBar: AppBar(
-        title: const Text('Control Page'),
+        title: const Text('Admin Home Page'),
         centerTitle: true,
       ),
       body: Padding(
@@ -48,23 +49,14 @@ class _AdminHomePageState extends State<AdminHomePage> {
               Icons.production_quantity_limits,
             ),
             gridButton(
-              'orders',
-              () => Navigator.of(context).pushNamed('order'),
-              Icons.emoji_food_beverage,
+              'order list',
+              () => Navigator.of(context).pushNamed('list'),
+              Icons.production_quantity_limits,
             ),
             gridButton(
-              'init',
-              () {
-                sqldb.initDatabase();
-              },
-              Icons.add,
-            ),
-            gridButton(
-              'delete',
-              () {
-                sqldb.deletedatabase();
-              },
-              Icons.delete,
+              'Feedback',
+              () => Navigator.of(context).pushNamed('feedlist'),
+              Icons.feedback,
             ),
           ],
         ),

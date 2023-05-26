@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../controllers/data controller.dart';
 import '../../controllers/order controller.dart';
+import 'cahier home page.dart';
 
 class FianlOrder extends StatefulWidget {
 
@@ -21,7 +22,6 @@ class _FianlOrderState extends State<FianlOrder> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-
             controller.careTaker.restoreState(controller.order,2);
             print('code :  ${controller.order.getCode()}');
             print('amount :  ${controller.order.getAmount()}');
@@ -61,7 +61,8 @@ class _FianlOrderState extends State<FianlOrder> {
                   'code': controller.order.getCode(),
                   'amount': controller.order.getAmount(),
                   'total': controller.order.getTotal(),
-                  'status': 'waiting',
+                  'isCash': controller.order.getIsCash(),
+                  'isTakeAway': controller.order.getIsTakeAway(),
                 },
 
               );
@@ -75,7 +76,9 @@ class _FianlOrderState extends State<FianlOrder> {
               dataController.getUsers('order');
               controller.index = 0;
 
-              Navigator.of(context).pushNamed('admin');
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context){
+                return CashierHomePage();
+              }));
             },
             style: ButtonStyle(
               padding: MaterialStateProperty.all(

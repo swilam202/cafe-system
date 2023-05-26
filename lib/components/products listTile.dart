@@ -23,7 +23,7 @@ Widget ProductListTile(
             style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
           trailing: Text(
-            '$duration min',
+            '${duration}:00 min',
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
           ),
         ),
