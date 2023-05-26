@@ -25,6 +25,9 @@ class _AdminHomePageState extends State<AdminHomePage> {
       appBar: AppBar(
         title: const Text('Admin Home Page'),
         centerTitle: true,
+        actions: [
+          IconButton(onPressed: ()=> Navigator.of(context).pushReplacementNamed('login'), icon: const Icon(Icons.login))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),

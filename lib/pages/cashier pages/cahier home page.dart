@@ -35,6 +35,9 @@ class _CashierHomePageState extends State<CashierHomePage> {
         automaticallyImplyLeading: false,
         title: const Text('Cashier Home Page'),
         centerTitle: true,
+        actions: [
+          IconButton(onPressed: ()=> Navigator.of(context).pushReplacementNamed('login'), icon: const Icon(Icons.login))
+        ],
       ),
      body: GridView.count(
        crossAxisCount: 2,
